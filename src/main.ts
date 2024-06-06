@@ -3,6 +3,8 @@ import { welcomeScene } from "./scenes/welcomeScene";
 import { loader } from "./resources";
 import { historyScene } from "./scenes/historyScene";
 import { gamificationScene } from "./scenes/gamificationScene";
+import { expoScene } from "./scenes/expoScene";
+
 
 const game = new Engine({
   width: 1200,
@@ -12,10 +14,11 @@ const game = new Engine({
 
 game.addScene("welcomeScene", new welcomeScene())
 game.addScene("Historia", new historyScene())
-game.addScene("Gamification", new gamificationScene)
+game.addScene("Gamification", new gamificationScene())
+game.addScene("Exposicao", new expoScene())
 
 game.start(loader).then(() => {
-  game.goToScene("welcomeScene", {
+  game.goToScene("", {
     sourceOut: new FadeInOut({ duration: 1000 })
   })
 })

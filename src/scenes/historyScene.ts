@@ -1,8 +1,29 @@
-import { Actor, Color, Engine, FadeInOut, Keys, Resource, Scene, Transition, vec } from "excalibur";
+import { Actor, Color, Engine, FadeInOut, Keys, Resource, Scene, SceneActivationContext, Transition, vec } from "excalibur";
 import { Resources } from "../resources";
 
 export class historyScene extends Scene {
     elementoTexto?: HTMLElement
+
+    // Método para esmaecer um elemento HTML 
+    fadeOutElement(elementoTexto: HTMLElement) {
+        let opacidade = parseFloat(elementoTexto.style.opacity)
+
+        // Abre portas para gambiarra!!
+        // Repetir diminuição da opacidade
+        setInterval(() => {
+            
+            // Se o elemento está visivel
+            if (opacidade > 0) {
+                // Diminuir opacidade
+                opacidade = opacidade - 0.01
+        
+                // Atualizar a opacidade do elemento
+                elementoTexto.style.opacity = opacidade.toString()
+        
+            }
+        }, 10)
+
+    }
 
     onTransition(direction: "in" | "out"): Transition | undefined {
         return new FadeInOut({
@@ -18,7 +39,7 @@ export class historyScene extends Scene {
         // Criar elemento com a descrição da empresa
         this.elementoTexto = document.createElement("div") as HTMLElement
 
-        // Definir a opacidade do elemento
+        // Definir a opacidade do elemento para 1 = visivel
         this.elementoTexto.style.opacity = "1"
 
         // Inserir elementoTexto no container-game
@@ -51,10 +72,18 @@ export class historyScene extends Scene {
 
         this.input.keyboard.on("press", (event) => {
             if (event.key == Keys.Enter, Keys.Space) {
+                // Criar transição suave do elemento 
+                this.fadeOutElement(this.elementoTexto!)
+
                 engine.goToScene("Gamification", {
                     sourceOut: new FadeInOut({ duration: 1000 })
                   })
             } 
         })
+    }
+
+    onDeactivate(context: SceneActivationContext<undefined>): void {
+        // Remover elemento texto da tela
+        this.elementoTexto?.remove()
     }
 }
