@@ -66,6 +66,7 @@ export class gamificationScene extends Scene {
             if (event.key == Keys.Enter, Keys.Space) {
                 // Criar transição suave do elemento 
                 this.fadeOutElement(this.elementoTexto!)
+                engine.goToScene("Exposicao")
             }
         })
     }
