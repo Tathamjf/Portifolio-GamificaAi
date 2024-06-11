@@ -62,6 +62,7 @@ export class gamificationScene extends Scene {
 
         this.add(actorGamificacao)
 
+        // Transição de cena
         this.input.keyboard.on("press", (event) => {
             if (event.key == Keys.Enter, Keys.Space) {
                 // Criar transição suave do elemento 
