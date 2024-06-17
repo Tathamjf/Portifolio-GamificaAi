@@ -109,7 +109,7 @@ export class Player extends Actor {
         // Definir animação inicial do player
         this.graphics.use("down-idle")
         // Definir o zoom
-
+        
 
 
 
@@ -173,7 +173,7 @@ export class Player extends Actor {
             frameDuration: duracaoFrameAnimacao
         })
         this.graphics.add("down-walk", downWalk)
-
+        
 
 
         // Configurar player para monitorar evento "hold" -> segurar tecla
@@ -256,6 +256,44 @@ export class Player extends Actor {
             if (this.vel.x == 0 && this.vel.y == 0) {
                 this.graphics.use(this.ultimaDirecao + "-idle")
                 this.graphics.current!
+
+            }
+        })
+
+        // Configurar o player para mobitorar evento "press" -> pressionar
+        engine.input.keyboard.on("press", (event) => {
+            if (event.key == Keys.F && this.temobjetoProximo) {
+                // identificar o alvo da interação
+                if (this.ultimoColisor?.owner.name == "mesa_stand_a") {
+                    console.log("Essa é amesa A")
+
+                    // Vai para a cena passando qual o objeto da interação
+                    engine.goToScene("Case", {
+                        sceneActivationData: {
+                            nomeDoActor: this.ultimoColisor?.owner.name
+                        }
+                    })
+                }
+
+            if (this.ultimoColisor?.owner.name == "mesa_stand_b") {
+                console.log("Essa é a mesa B")
+
+                engine.goToScene("Case", {
+                    sceneActivationData: {
+                        nomeDoActor: this.ultimoColisor?.owner.name
+                    }
+                })
+            }
+
+            if (this.ultimoColisor?.owner.name == "mesa_stand_c") {
+                console.log("Essa é a mesa c")
+
+                engine.goToScene("Case", {
+                    sceneActivationData: {
+                        nomeDoActor: this.ultimoColisor?.owner.name
+                    }
+                })
+            }
             }
         })
     }
@@ -274,7 +312,10 @@ export class Player extends Actor {
             // Marcar que o objeto nao esta proximo
             this.temobjetoProximo = false
 
-            console.log("Está longe");
+            // console.log("Está longe");
         }
     }
+
+    // this.graphics.current!.scale = vec(0.5, 0.5)
+
 }

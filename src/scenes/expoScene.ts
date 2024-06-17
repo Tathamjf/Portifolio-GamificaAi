@@ -1,4 +1,4 @@
-import ex, { Actor, CollisionType, Color, Engine, FadeInOut, Scene, Transition, vec } from "excalibur";
+import { Actor, CollisionType, Color, Engine, FadeInOut, Scene, Transition, vec } from "excalibur";
 import { Resources } from "../resources";
 import { Player } from "../actors/player";
 import { npc } from "../actors/npc";

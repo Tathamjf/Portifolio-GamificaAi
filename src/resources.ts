@@ -3,6 +3,9 @@ import sword from "./images/sword.png";
 import logo from "./images/logo.png";
 import logoVertical from "./images/logo-vertical.png";
 import gamificacao from "./images/gamification.png";
+import npcA from "./images/npcA.png";
+import npcB from "./images/npcB.png";
+import npcC from "./images/npcC.png";
 import { TiledResource } from "@excaliburjs/plugin-tiled";
 
 
@@ -32,7 +35,10 @@ export const Resources = {
       {path: "tileset_estoque.tsx", output: tsxEstoquePath},
       {path: "tileset_bibilioteca.tsx", output: tsxBibliotecaPath}
     ]
-  })
+  }),
+  NpcA: new ImageSource(npcA),
+  NpcB: new ImageSource(npcB),
+  NpcC: new ImageSource(npcC),
 } as const;
 
 export const loader = new Loader();
