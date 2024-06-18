@@ -16,6 +16,12 @@ export class expoScene extends Scene {
         // Ativar o modo de Debug
         engine.toggleDebug()
 
+        // Carregar a musica de fundo -> (BGM)
+        let musicaFundo = Resources.RitimadaBGM
+
+        // Configurar a musica e executar 
+        musicaFundo.loop = true
+        musicaFundo.play(0.5)
 
         this.backgroundColor = Color.fromRGB(64, 63, 76)
         // Carregar o Mapa
